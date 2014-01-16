@@ -35,6 +35,9 @@ class Crawler
     attrs = Hash[api_comment.attributes.slice(*Comment.attribute_names.map(&:to_sym)).map{|k, v| [k, v.to_s]}]
 
     Comment.create(attrs)
-    api_comment.replies.each{|reply| save_comment(reply)}
+    api_comment.replies.select{|r| r.attributes[:kind] == 't1'}.each{|reply| save_comment(reply)}
+  rescue
+    puts "Shit."
+    #binding.pry
   end
 end
