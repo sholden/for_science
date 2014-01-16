@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140116052214) do
+ActiveRecord::Schema.define(version: 20140116160341) do
 
   create_table "comments", id: false, force: true do |t|
     t.string   "subreddit_id"
@@ -88,5 +88,23 @@ ActiveRecord::Schema.define(version: 20140116052214) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "word_counts", force: true do |t|
+    t.string   "word"
+    t.integer  "count"
+    t.string   "link_id"
+    t.string   "comment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "word_counts", ["comment_id"], name: "index_word_counts_on_comment_id"
+  add_index "word_counts", ["link_id"], name: "index_word_counts_on_link_id"
+  add_index "word_counts", ["word"], name: "index_word_counts_on_word"
 
 end

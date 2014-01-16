@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: MyString
+  count: 1
+  link_id: MyString
+  comment_id: MyString
+
+two:
+  word: MyString
+  count: 1
+  link_id: MyString
+  comment_id: MyString
